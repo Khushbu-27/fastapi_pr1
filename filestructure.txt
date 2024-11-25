@@ -1,43 +1,114 @@
 |-- .env
 |-- .gitignore
 |-- REQUIREMENTS.md
+|-- __pycache__
+    |-- main.cpython-310.pyc
 |-- app
+    |-- __pycache__
+        |-- main.cpython-310.pyc
+    |-- blueprints
+        |-- __pycache__
+            |-- routers.cpython-310.pyc
+        |-- routers.py
     |-- config
         |-- __init__.py
     |-- database
+        |-- __pycache__
+            |-- database.cpython-310.pyc
         |-- database.py
+    |-- main.py
     |-- src
         |-- __init__.py
+        |-- __pycache__
+            |-- __init__.cpython-310.pyc
         |-- api
             |-- __init__.py
-            |-- vi
-                |-- models
-                    |-- exam.py
-                    |-- marks.py
-                    |-- users.py
-                |-- schemas
-                    |-- exam.py
-                    |-- marks.py
-                    |-- users
-                        |-- admin.py
-                        |-- student.py
-                        |-- teacher.py
-                |-- services
-                    |-- crud
-                        |-- create.py
-                        |-- delete.py
-                        |-- read(view)
-                            |-- adminview.py
-                            |-- studentview.py
-                            |-- teacherview.py
-                        |-- update.py
-                    |-- forgotpass.py
-                    |-- login.py
-                    |-- logingoogle.py
-                    |-- utils
-                        |-- email_utils.py
-                |-- user_auth
-                    |-- auth.py
+            |-- __pycache__
+                |-- __init__.cpython-310.pyc
+            |-- v1
+                |-- __init__.py
+                |-- __pycache__
+                    |-- __init__.cpython-310.pyc
+                |-- exam
+                    |-- __init__.py
+                    |-- __pycache__
+                        |-- __init__.cpython-310.pyc
+                    |-- model
+                        |-- __pycache__
+                            |-- exammodel.cpython-310.pyc
+                        |-- exammodel.py
+                    |-- schema
+                        |-- examschema.py
+                    |-- services
+                        |-- __init__.py
+                        |-- __pycache__
+                            |-- __init__.cpython-310.pyc
+                        |-- crud
+                            |-- __pycache__
+                                |-- createexam.cpython-310.pyc
+                                |-- deleteexam.cpython-310.pyc
+                                |-- updateexam.cpython-310.pyc
+                                |-- viewexam.cpython-310.pyc
+                            |-- createexam.py
+                            |-- deleteexam.py
+                            |-- updateexam.py
+                            |-- viewexam.py
+                |-- marks
+                    |-- __init__.py
+                    |-- __pycache__
+                        |-- __init__.cpython-310.pyc
+                    |-- model
+                        |-- __pycache__
+                            |-- marksmodel.cpython-310.pyc
+                        |-- marksmodel.py
+                    |-- schema
+                        |-- __pycache__
+                            |-- marksschema.cpython-310.pyc
+                        |-- marksschema.py
+                    |-- services
+                        |-- __init__.py
+                        |-- __pycache__
+                            |-- __init__.cpython-310.pyc
+                        |-- crud
+                            |-- __pycache__
+                                |-- createmarks.cpython-310.pyc
+                                |-- viewmarks.cpython-310.pyc
+                            |-- createmarks.py
+                            |-- viewmarks.py
+                |-- users
+                    |-- __init__.py
+                    |-- __pycache__
+                        |-- __init__.cpython-310.pyc
+                    |-- model
+                        |-- __pycache__
+                            |-- users.cpython-310.pyc
+                        |-- users.py
+                    |-- schema
+                        |-- userschemas.py
+                    |-- services
+                        |-- __init__.py
+                        |-- crud
+                            |-- usercreate.py
+                            |-- userdelete.py
+                            |-- userread
+                                |-- adminview.py
+                                |-- studentview.py
+                                |-- teacherview.py
+                            |-- userupdate
+                                |-- adminupdate.py
+                                |-- studentupdate.py
+                                |-- teacherupdate.py
+                        |-- loginuser
+                            |-- facebooklogin.py
+                            |-- googlelogin.py
+                            |-- login.py
+                        |-- utils
+                            |-- email_utils.py
+                            |-- forgotpass_utils.py
+                    |-- user_authentication
+                        |-- __pycache__
+                            |-- auth.cpython-310.pyc
+                        |-- auth.py
 |-- env
     |-- bin
         |-- Activate.ps1
@@ -9316,5 +9387,4 @@
                     |-- licenses
                         |-- LICENSE.md
     |-- pyvenv.cfg
-|-- main.py
 |-- requirements.txt
