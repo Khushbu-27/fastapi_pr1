@@ -1,24 +1,13 @@
 
 from datetime import timedelta
-<<<<<<< HEAD
 from fastapi import Depends, FastAPI, HTTPException, requests
-=======
 from fastapi import Depends, APIRouter, HTTPException, requests
->>>>>>> db conn
 from fastapi.responses import RedirectResponse
 import os
 from requests import Session
 from app.database.database import get_db
 from app.src.api.v1.users.model.users import User
 from app.src.api.v1.users.user_authentication.auth import ACCESS_TOKEN_EXPIRE_MINUTES, JWTBearer, create_access_token, decode_access_token 
-<<<<<<< HEAD
-app = FastAPI()
-
-# Login with Google
-@app.get(
-    "/auth/login",
-    tags=["login"],
-=======
 
 router = APIRouter()
 
@@ -26,7 +15,7 @@ router = APIRouter()
 @router.get(
     "/auth/login",
     tags=["Google login"],
->>>>>>> db conn
+
     summary="Login with Google",
     description="""
     Redirects the user to the Google Login page.
@@ -49,11 +38,8 @@ def google_login():
 
 print(os.getenv("GOOGLE_REDIRECT_URI"))
 
-<<<<<<< HEAD
-@app.get("/auth/login/callback", tags=["login"], summary="Google Login Callback")
-=======
+
 @router.get("/auth/login/callback", tags=["Google login"], summary="Google Login Callback")
->>>>>>> db conn
 def google_callback(code: str, db: Session = Depends(get_db)):
    
     token_url = "https://oauth2.googleapis.com/token"
@@ -107,11 +93,8 @@ def get_current_user(token: str = Depends(JWTBearer())):
     except Exception:
         raise HTTPException(status_code=401, detail="Could not validate credentials")
 
-<<<<<<< HEAD
-@app.get("/protected-endpoint", tags=["login"])
-=======
 @router.get("/protected-endpoint", tags=["Google login"])
->>>>>>> db conn
+
 def protected_endpoint(current_user: str = Depends(get_current_user)):
   
     return {"message": "Access granted", "user": current_user}
