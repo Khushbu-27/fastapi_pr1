@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-#!/bin/sh
-'''exec' "/home/mind/Desktop/School management (fastapi proj1)/fastapi_pr1/env/bin/python3" "$0" "$@"
-' '''
-=======
 #!/home/mind/Desktop/school_fastapi_prj/env/bin/python3
->>>>>>> db conn
 # -*- coding: utf-8 -*-
 import re
 import sys
