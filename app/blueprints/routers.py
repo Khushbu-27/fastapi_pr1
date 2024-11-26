@@ -16,10 +16,16 @@ from app.src.api.v1.users.services.crud.userupdate.teacherupdate import router a
 from app.src.api.v1.users.services.loginuser.login import router as login_router
 from app.src.api.v1.users.services.loginuser.googlelogin import router as google_login_router
 
+<<<<<<< HEAD
 # Centralized Router
 router = APIRouter()
 
 # Include routers
+=======
+     
+router = APIRouter()
+
+>>>>>>> db conn
 router.include_router(create_exam_router, prefix="/exam/create", tags=["Exam"])
 router.include_router(delete_exam_router, prefix="/exam/delete", tags=["Exam"])
 router.include_router(update_exam_router, prefix="/exam/update", tags=["Exam"])
@@ -35,4 +41,8 @@ router.include_router(admin_update_router, prefix="/user/update/admin", tags=["U
 router.include_router(student_update_router, prefix="/user/update/student", tags=["User"])
 router.include_router(teacher_update_router, prefix="/user/update/teacher", tags=["User"])
 router.include_router(login_router, prefix="/login", tags=["Authentication"])
+<<<<<<< HEAD
 router.include_router(google_login_router, prefix="/google-login", tags=["Authentication"])
+=======
+router.include_router(google_login_router, prefix="/google-login")
+>>>>>>> db conn

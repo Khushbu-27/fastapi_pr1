@@ -1,15 +1,26 @@
 
+<<<<<<< HEAD
 from fastapi import Depends, FastAPI, HTTPException ,status
+=======
+from fastapi import Depends, APIRouter, HTTPException ,status
+>>>>>>> db conn
 from requests import Session
 from app.database.database import get_db
 from app.src.api.v1.users.model.users import User
 from app.src.api.v1.users.schema.userschemas import StudentResponse, UserUpdate
 from app.src.api.v1.users.user_authentication.auth import authorize_user, get_password_hash
 
+<<<<<<< HEAD
 app = FastAPI()
 
 # REQUIREMENT: Student - Update Own Info
 @app.put("/student/{student-id}/update", response_model=StudentResponse, tags=["student"])
+=======
+router = APIRouter()
+
+# REQUIREMENT: Student - Update Own Info
+@router.put("/student/{student-id}/update", response_model=StudentResponse)
+>>>>>>> db conn
 def update_own_info(update_data: UserUpdate, current_user = Depends(authorize_user), db: Session = Depends(get_db)):
 
     if current_user.role != "student":

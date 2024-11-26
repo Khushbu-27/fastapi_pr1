@@ -1,7 +1,10 @@
 
 from typing_extensions import List
 from fastapi import Depends, APIRouter, HTTPException
+<<<<<<< HEAD
 
+=======
+>>>>>>> db conn
 from requests import Session
 from app.database.database import get_db
 from app.src.api.v1.exam.model.exammodel import Exam
@@ -11,8 +14,13 @@ from app.src.api.v1.users.user_authentication.auth import authorize_user
 router = APIRouter()
 
 # REQUIREMENT: student - view student own marks
+<<<<<<< HEAD
 @router.get("/students/{student_id}/marks", response_model=StudentMarks)
 def get_student_marks(student_id: int, db: Session = Depends(get_db), current_user=Depends(authorize_user)):
+=======
+@router.get("/students/{student_id}/marks")
+def get_student_marks(student_id: int, db: Session = Depends(get_db), current_user=Depends(authorize_user), response_model=List[StudentMarks]):
+>>>>>>> db conn
 
     if current_user.role != "student" or current_user.id != student_id:
         raise HTTPException(status_code=403, detail="Access forbidden")

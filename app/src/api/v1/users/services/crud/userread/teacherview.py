@@ -1,15 +1,26 @@
 
+<<<<<<< HEAD
 from fastapi import Depends, FastAPI, HTTPException ,status
+=======
+from fastapi import Depends, APIRouter, HTTPException ,status
+>>>>>>> db conn
 from requests import Session
 from app.database.database import get_db
 from app.src.api.v1.users.model.users import User
 from app.src.api.v1.users.schema.userschemas import StudentResponse, TeacherResponse, TeacherSalary
 from app.src.api.v1.users.user_authentication.auth import authorize_user
 
+<<<<<<< HEAD
 app = FastAPI()
 
 # REQUIREMENT: Teacher - View Own Info
 @app.get("/teacher/{teacher_id}", response_model=TeacherResponse, tags=["teacher"])
+=======
+router = APIRouter()
+
+# REQUIREMENT: Teacher - View Own Info
+@router.get("/teacher/{teacher_id}", response_model=TeacherResponse)
+>>>>>>> db conn
 def view_own_teacher_info(db: Session = Depends(get_db) , current_user=Depends(authorize_user)):
 
     if current_user.role != "teacher":
@@ -20,7 +31,11 @@ def view_own_teacher_info(db: Session = Depends(get_db) , current_user=Depends(a
 
 
 # REQUIREMENT: view teacher own salary
+<<<<<<< HEAD
 @app.get("/teacher/view_salary/{teacher_id}" , tags=["teacher"],response_model=TeacherSalary)
+=======
+@router.get("/teacher/view_salary/{teacher_id}",response_model=TeacherSalary)
+>>>>>>> db conn
 def view_my_salary( db: Session = Depends(get_db), current_user = Depends(authorize_user)):
    
     if current_user.role != "teacher":
@@ -35,7 +50,11 @@ def view_my_salary( db: Session = Depends(get_db), current_user = Depends(author
 
 
 # REQUIREMENT: Teacher - View Student Info (View Only)
+<<<<<<< HEAD
 @app.get("/teacher/view_student/{student_id}", response_model=StudentResponse, tags=["teacher"])
+=======
+@router.get("/teacher/view_student/{student_id}", response_model=StudentResponse)
+>>>>>>> db conn
 def teacher_view_student_info(student_id: int, current_user = Depends(authorize_user), db: Session = Depends(get_db)):
 
     if current_user.role != "teacher":
