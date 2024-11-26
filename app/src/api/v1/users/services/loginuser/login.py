@@ -3,6 +3,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from requests import Session
 
 from app.database.database import get_db
+<<<<<<< HEAD
 from app.src.api.v1.users.user_authentication import get_password_hash
 from app.src.api.v1.users.user_authentication.auth import create_access_token, verify_password
 from . import models,schemas
@@ -14,6 +15,19 @@ app = FastAPI()
 # REQUIREMENT: Registration for Admin only
 @app.post("/admin/register", response_model=schemas.AdminResponse, tags=["admin"])
 def admin_register(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
+=======
+from app.src.api.v1.users.model.users import User
+from app.src.api.v1.users.schema.userschemas import AdminCreate, AdminResponse
+from app.src.api.v1.users.user_authentication.auth import create_access_token, get_password_hash, verify_password
+from fastapi import APIRouter, Depends, HTTPException , status
+
+router = APIRouter()
+
+
+# REQUIREMENT: Registration for Admin only
+@router.post("/admin/register", response_model=AdminResponse)
+def admin_register(admin: AdminCreate, db: Session = Depends(get_db)):
+>>>>>>> db conn
     """
     Register an admin after validating email and ensuring it is valid.
     """
@@ -23,6 +37,7 @@ def admin_register(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
             detail="Password and confirm password do not match"
         )
     
+<<<<<<< HEAD
     if db.query(models.User).filter(models.User.username == admin.username).first():
         raise HTTPException(status_code=400, detail="Username already registered")
     
@@ -31,6 +46,16 @@ def admin_register(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
 
     hashed_password = get_password_hash(admin.password)
     new_admin = models.User(
+=======
+    if db.query(User).filter(User.username == admin.username).first():
+        raise HTTPException(status_code=400, detail="Username already registered")
+    
+    if db.query(User).filter(User.email == admin.email).first():
+        raise HTTPException(status_code=400, detail="Email already registered")
+
+    hashed_password = get_password_hash(admin.password)
+    new_admin = User(
+>>>>>>> db conn
         username=admin.username,
         email=admin.email,
         hashed_password=hashed_password,
@@ -49,9 +74,15 @@ def admin_register(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
 
 
 # REQUIREMENT: Login users
+<<<<<<< HEAD
 @app.post('/login', tags=["login"])
 def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.username == form_data.username).first()
+=======
+@router.post('/login')
+def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.username == form_data.username).first()
+>>>>>>> db conn
     
     if not user or not verify_password(form_data.password, user.hashed_password):   
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")

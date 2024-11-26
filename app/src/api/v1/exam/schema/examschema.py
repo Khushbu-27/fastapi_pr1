@@ -1,4 +1,10 @@
 
+<<<<<<< HEAD
+=======
+from datetime import date, datetime
+from pydantic import BaseModel, Field, validator
+from sqlalchemy import Enum
+>>>>>>> db conn
 
 # Exam and ExamStatus Schemas
 class ExamStatus(str, Enum):

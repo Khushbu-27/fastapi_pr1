@@ -1,15 +1,26 @@
 
+<<<<<<< HEAD
 from fastapi import Depends, FastAPI, HTTPException
+=======
+from fastapi import Depends,APIRouter, HTTPException
+>>>>>>> db conn
 from requests import Session
 from app.src.api.v1.users.model.users import User
 from app.database.database import get_db
 from app.src.api.v1.users.schema.userschemas import StudentCreate, StudentResponse, TeacherCreate, TeacherResponse, TeacherSalary
 from app.src.api.v1.users.user_authentication.auth import authorize_admin, get_password_hash
 
+<<<<<<< HEAD
 app = FastAPI()
 
 # REQUIREMENT: Add Student (Admin Only)
 @app.post("/add_student", response_model=StudentResponse, tags=["add by admin"])
+=======
+router = APIRouter()
+
+# REQUIREMENT: Add Student (Admin Only)
+@router.post("/add_student", response_model=StudentResponse)
+>>>>>>> db conn
 def add_student(student: StudentCreate, db: Session = Depends(get_db), token: str = Depends(authorize_admin)):
 
     db_student = db.query(User).filter(User.username == student.username).first()
@@ -27,7 +38,11 @@ def add_student(student: StudentCreate, db: Session = Depends(get_db), token: st
 
 
 # REQUIREMENT: Add Teacher (Admin Only)
+<<<<<<< HEAD
 @app.post("/add_teacher", response_model=TeacherResponse, tags=["add by admin"])
+=======
+@router.post("/add_teacher", response_model=TeacherResponse)
+>>>>>>> db conn
 def add_teacher(teacher: TeacherCreate, db: Session = Depends(get_db), token: str = Depends(authorize_admin)):
 
     db_teacher = db.query(User).filter(User.username == teacher.username).first()
@@ -44,7 +59,11 @@ def add_teacher(teacher: TeacherCreate, db: Session = Depends(get_db), token: st
 
 
 # REQUIREMENT:Add teacher salary by admin
+<<<<<<< HEAD
 @app.post("/add_salary/{teacher_id}" , tags=["add by admin"])
+=======
+@router.post("/add_salary/{teacher_id}" )
+>>>>>>> db conn
 def add_teacher_salary(teacher_id: int, salary: TeacherSalary, db: Session = Depends(get_db), current_user: User = Depends(authorize_admin) ):
     teacher = db.query(User).filter(User.id == teacher_id, User.role == "teacher").first()
 

@@ -1,20 +1,32 @@
 
 from datetime import time
 import random
+<<<<<<< HEAD
 from fastapi import Depends, FastAPI, HTTPException
+=======
+from fastapi import Depends, APIRouter, HTTPException
+>>>>>>> db conn
 from requests import Session
 from app.src.api.v1.users.services.utils import email_utils 
 from app.database.database import get_db
 from app.src.api.v1.users.model.users import User
 from app.src.api.v1.users.user_authentication.auth import get_password_hash
 
+<<<<<<< HEAD
 app = FastAPI()
+=======
+router = APIRouter()
+>>>>>>> db conn
 
 otp_store = {}
 otp_expiry_time = 300 
 
 #forgot password
+<<<<<<< HEAD
 @app.post("/forgot-password/" , tags=["login"])
+=======
+@router.post("/forgot-password/" )
+>>>>>>> db conn
 def forgot_password(email: str , db: Session = Depends(get_db)):
     """Generate OTP and send it to the email."""
     
@@ -29,7 +41,11 @@ def forgot_password(email: str , db: Session = Depends(get_db)):
     return {"message": "OTP sent to email"}
 
 #reset password
+<<<<<<< HEAD
 @app.post("/reset-password/", tags=["login"])
+=======
+@router.post("/reset-password/")
+>>>>>>> db conn
 def reset_password(user_id: int, email: str, otp: str, new_password: str, db: Session = Depends(get_db)):
     """Verify user ID, OTP and reset password."""
     
